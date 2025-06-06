@@ -1,0 +1,1478 @@
+/* ================================================
+   MINIMA V3 CUSTOM STYLES
+   ================================================
+   
+   This file contains custom styling for Emily's Jekyll blog
+   using the Minima v3 theme. Styles are organized by component
+   for better maintainability.
+   
+   Variables are defined in custom-variables.scss
+   ================================================ */
+
+/* ================================================
+   1. TYPOGRAPHY & SITE-WIDE STYLES
+   ================================================ */
+
+/* Base font size override */
+html {
+  font-size: $base-font-size;
+}
+
+/* Site-wide heading styles using custom variables */
+h1, .post-content h1 {
+  font-size: $h1-font-size;
+  font-weight: $heading-font-weight;
+  line-height: $h1-line-height;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2, .post-content h2 {
+  font-size: $h2-font-size;
+  font-weight: $heading-font-weight;
+  line-height: $h2-line-height;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+h3, .post-content h3 {
+  font-size: $h3-font-size;
+  font-weight: $heading-font-weight;
+  line-height: $h3-line-height;
+  margin-top: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+h4, .post-content h4 {
+  font-size: $h4-font-size;
+  font-weight: $heading-font-weight;
+  line-height: $h4-line-height;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h5, .post-content h5 {
+  font-size: $h5-font-size;
+  font-weight: $heading-font-weight;
+  line-height: $h5-line-height;
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+h6, .post-content h6 {
+  font-size: $h6-font-size;
+  font-weight: $heading-font-weight;
+  line-height: $h6-line-height;
+  margin-top: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Post title styling */
+.post-header .post-title {
+  font-size: $post-title-font-size;
+  font-weight: $post-title-font-weight;
+  line-height: $post-title-line-height;
+}
+
+/* Global link hover color */
+a:hover {
+  color: $link-hover-color !important;
+}
+
+/* Center all images by default */
+.post-content img,
+.post-excerpt img,
+.home .post-list img {
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ================================================
+   2. HEADER & NAVIGATION
+   ================================================ */
+
+/* Custom centered header layout */
+.site-header {
+  width: 100%;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fff;
+  margin-bottom: 0;
+  text-align: center !important;
+}
+
+/* Force wrapper to full width and center content */
+.site-header .wrapper {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 40px 20px 0 20px !important;
+  text-align: center !important;
+  display: block !important;
+  position: relative !important;
+}
+
+/* Centered site title with custom font */
+.site-header .wrapper .site-title {
+  font-family: "Caveat", cursive !important;
+  font-size: 3.5rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  text-decoration: none !important;
+  color: #424242 !important;
+  display: block !important;
+  margin: 0 auto 20px auto !important;
+  text-align: center !important;
+  width: 100% !important;
+  float: none !important;
+  position: relative !important;
+}
+
+.site-header .wrapper .site-title:visited {
+  color: #424242 !important;
+}
+
+.site-header .wrapper .site-title:hover {
+  text-decoration: none !important;
+  color: #111 !important;
+}
+
+/* Horizontal centered navigation */
+.site-header .site-nav {
+  width: 100% !important;
+  background: #fff !important;
+  border-top: 1px solid #f0f0f0 !important;
+  padding: 0px 0 !important;
+  margin: 0 -20px !important;
+  text-align: center !important;
+  position: relative !important;
+  float: none !important;
+}
+
+/* Hide mobile menu elements completely */
+.site-nav .nav-trigger,
+.site-nav .menu-icon,
+.site-nav label[for="nav-trigger"] {
+  display: none !important;
+}
+
+/* Responsive navigation - smaller links that wrap */
+@media (max-width: 1200px) {
+  .site-nav .page-link {
+    font-size: 0.7rem !important;
+    padding: 1px 4px !important;
+    margin: 0 2px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-nav .page-link {
+    font-size: 0.65rem !important;
+    padding: 1px 3px !important;
+    margin: 0 1px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-nav .trigger {
+    text-align: center !important;
+  }
+  
+  .site-nav .page-link {
+    font-size: 0.6rem !important;
+    padding: 2px 4px !important;
+    margin: 1px !important;
+    display: inline-block !important;
+  }
+}
+
+/* Centered navigation links - desktop only */
+@media (min-width: 1201px) {
+  .site-nav .trigger {
+    display: block !important;
+    text-align: center !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
+
+.site-nav .page-link {
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 1px 8px !important;
+  transition: color 0.3s ease !important;
+  display: inline-block !important;
+  margin: 0 4px !important;
+}
+
+.site-nav .page-link:hover {
+  text-decoration: none !important;
+}
+
+/* Header social icons */
+.header-social-links {
+  position: absolute;
+  top: 15%;
+  right: 60px;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.header-social-links .social-media-list {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-social-links .social-media-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.header-social-links .social-media-list li a {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+}
+
+.header-social-links .grey {
+  color: #424242 !important;
+  transition: color 0.2s ease;
+  opacity: 1 !important;
+  font-size: 0.9rem !important;
+}
+
+.header-social-links .grey:hover {
+  color: #111 !important;
+}
+
+.header-social-links .fa-instagram {
+  font-weight: 900 !important;
+}
+
+.header-social-links .svg-icon {
+  width: 16px;
+  height: 16px;
+  fill: #424242 !important;
+  transition: fill 0.2s ease;
+  opacity: 1 !important;
+}
+
+.header-social-links .svg-icon:hover {
+  fill: #111 !important;
+}
+
+/* ================================================
+   3. SIDEBAR COMPONENTS
+   ================================================ */
+
+.sidebar {
+  background-color: #f8f9fa;
+  padding: 10px 20px 20px 20px;
+  border-radius: 8px;
+  margin-left: 30px;
+  max-width: 300px;
+}
+
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.sidebar-section:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar h3 {
+  color: #333;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.sidebar h3:first-child {
+  margin-top: 0;
+}
+
+/* Remove extra space in sidebar sections */
+.sidebar-section:first-child {
+  margin-top: -15px;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-list li {
+  margin-bottom: 8px;
+  padding: 5px 0;
+}
+
+.sidebar-list a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-list a:hover {
+  color: #3a3a3a;
+}
+
+.post-count {
+  font-size: 0.85em;
+  color: #666;
+  background-color: #e9ecef;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: fit-content;
+}
+
+/* Tag cloud styling */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #e9ecef;
+  color: #495057;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 0.85em;
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background-color: #3a3a3a;
+  color: white;
+  text-decoration: none;
+}
+
+.tag-small { font-size: 0.75em; }
+.tag-medium { font-size: 0.85em; font-weight: 500; }
+.tag-large { font-size: 0.95em; font-weight: 600; }
+
+.sidebar-empty {
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Recent posts styling */
+.recent-posts li {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.recent-posts li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.recent-posts a {
+  display: block;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.recent-posts .post-date {
+  color: #666;
+  font-size: 0.8em;
+  margin: 0;
+  min-width: auto;
+  display: block;
+}
+
+/* Sidebar layout */
+.page-with-sidebar-layout {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ================================================
+   4. POSTS PAGE
+   ================================================ */
+
+/* Hide page title on posts listing page only */
+.posts-page .post-list-heading,
+.posts-page .page-heading,
+.posts-page h1.page-title,
+.posts-page .home h1 {
+  display: none !important;
+}
+
+/* Hide the header before posts-page */
+.post-header:has(+ .post-content .posts-page),
+.page-header:has(+ .page-content .posts-page) {
+  display: none !important;
+}
+
+
+/* Posts page layout with sidebar */
+.posts-sidebar {
+  float: right;
+  width: 280px;
+  margin-left: 20px;
+  margin-top: 0;
+}
+
+/* Give main content area space for sidebar */
+.posts-page .post-list-heading,
+.posts-page .post-list {
+  margin-right: 320px;
+}
+
+/* Clear floats */
+.posts-page .home::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Posts list layout */
+.posts-list .posts-list-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.posts-list .posts-list-item:last-child {
+  border-bottom: none;
+}
+
+.posts-image {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 0;
+  border-radius: 8px;
+  order: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.posts-content {
+  width: 100%;
+}
+
+.posts-list h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.posts-list h3 a {
+  text-decoration: none;
+}
+
+.posts-list h3 a:hover {
+  text-decoration: none;
+}
+
+.posts-author-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.posts-author {
+  color: #777;
+  font-style: italic;
+}
+
+.posts-author-date time {
+  color: #666;
+  font-style: italic;
+}
+
+.posts-category {
+  margin-bottom: 1rem;
+}
+
+.posts-meta time {
+  color: #666;
+  font-style: italic;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.posts-excerpt {
+  margin-bottom: 0.5rem;
+  color: #666;
+  line-height: 1.5;
+  font-size: 1.15rem;
+}
+
+.posts-excerpt p:first-child {
+  margin-top: 0;
+}
+
+
+.posts-meta {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Tablet responsive design */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .posts-page {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .posts-sidebar {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 2rem;
+    order: 2;
+  }
+  
+  .sidebar {
+    max-width: none;
+    margin-left: 0;
+  }
+  
+  .home {
+    order: 1;
+  }
+  
+  .posts-page .post-list-heading,
+  .posts-page .post-list {
+    margin-right: 0;
+  }
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+  /* Fix header width on mobile */
+  .site-header {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0;
+    width: calc(100% + 40px);
+  }
+  
+  .site-header .wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: none;
+  }
+}
+
+/* Hide default page header for posts with custom layout */
+.page .post-additions ~ .post-content .page-header,
+.page:has(.post-additions) .page-header {
+  display: none !important;
+}
+
+/* Ensure individual post headers and titles are visible */
+.post .post-header,
+.page-content .post-header {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.post-header .post-title {
+  display: block !important;
+  visibility: visible !important;
+  color: #333 !important;
+  font-size: 2.5rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Post featured images */
+.post-featured-image {
+  width: 100%;
+  margin: 1.5rem 0 0 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.post-featured-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Move post additions inside header before separator */
+.post-additions {
+  margin-bottom: 1rem;
+}
+
+.post-additions .post-meta {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Override page header styling for posts with images */
+.page:has(.post-featured-image) .page-header {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+/* Also target the post header directly */
+.post .post-header {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+/* Add separator after post category only on individual post pages */
+.post .posts-category {
+  border-bottom: 1px solid #e7e7e7;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Category and tags on same line for individual posts */
+.posts-category-tags {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e7e7e7;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.posts-category-left {
+  flex-shrink: 0;
+}
+
+.posts-tags-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.tag {
+  background: #f0f0f0;
+  color: #555;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.tag:hover {
+  background: #e0e0e0;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Container for post image and metadata with tight spacing */
+.post-image-meta-container {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-image-meta-container .post-featured-image {
+  margin: 0;
+}
+
+.post-image-meta-container .posts-author-date {
+  margin: 0.1rem 0 0.25rem 0;
+}
+
+.post-image-meta-container .posts-category {
+  margin: 0;
+}
+
+
+/* Remove separator on posts listing page */
+.posts-page .posts-category {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Remove underlines from footer links */
+.site-footer a {
+  text-decoration: none !important;
+}
+
+.site-footer a:hover {
+  text-decoration: none !important;
+}
+
+/* Remove border/outline from RSS icon in footer */
+.site-footer .svg-icon {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+.site-footer .social-media-list a {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+.site-footer .social-media-list li {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+.site-footer .social-media-list {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+/* Size the custom menu-burger icon to match RSS icon */
+.site-footer .social-media-list svg {
+  width: 16px !important;
+  height: 16px !important;
+  fill: #424242 !important;
+}
+
+/* Footer copyright styling */
+.footer-copyright {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e8e8e8;
+}
+
+.footer-copyright p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Remove underlines from category page links */
+.categories a,
+.categories a:hover {
+  text-decoration: none !important;
+}
+
+.category-posts a,
+.category-posts a:hover {
+  text-decoration: none !important;
+}
+
+/* Remove underlines from archive/category page post titles */
+.archive-posts-list a,
+.archive-posts-list a:hover,
+.home .post-list a,
+.home .post-list a:hover {
+  text-decoration: none !important;
+}
+
+/* Posts page responsive design */
+@media (max-width: 768px) {
+  .posts-page {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .posts-sidebar {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 2rem;
+    order: 2;
+  }
+  
+  .sidebar {
+    max-width: none;
+    margin-left: 0;
+  }
+  
+  .home {
+    order: 1;
+  }
+  
+  .posts-page .post-list-heading,
+  .posts-page .post-list {
+    margin-right: 0;
+  }
+  
+  .posts-list .posts-list-item {
+    flex-direction: column;
+  }
+  
+  .posts-image {
+    width: 100%;
+    height: 150px;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+/* See more functionality for posts page */
+.see-more-btn {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 0.85em;
+  padding: 4px 0;
+  margin-top: 4px;
+  transition: color 0.2s ease;
+}
+
+.see-more-btn:hover {
+  color: #666;
+}
+
+.see-more-container {
+  margin-top: 8px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 8px;
+}
+
+/* ================================================
+   5. ARCHIVE PAGES
+   ================================================ */
+
+/* Archive post list layout */
+.archive-posts-list .archive-posts-item {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e8e8e8;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.archive-posts-list .archive-posts-item:last-child {
+  border-bottom: none;
+}
+
+.archive-posts-image {
+  width: 300px;
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+
+/* Wider featured images for archive pages */
+.archive-posts-image-wide {
+  width: 400px;
+}
+
+.archive-posts-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Wider images get more height */
+.archive-posts-image-wide img {
+  height: 250px;
+}
+
+.archive-posts-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.archive-posts-content .post-meta {
+  margin-bottom: 0.5rem;
+}
+
+.archive-posts-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Archive metadata styling */
+.archive-meta {
+  font-size: 0.875em;
+  margin-top: 0.5em;
+  color: #666;
+}
+
+.archive-meta a {
+  color: #333;
+  text-decoration: none;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background-color: rgba(86, 86, 86, 0.05);
+  margin-right: 3px;
+  font-size: 0.9em;
+}
+
+.archive-meta a:hover {
+  background-color: #e0e0e0;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Archive header styling */
+.home .post-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 1rem;
+  text-align: left;
+}
+
+.home .post-title {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: #111;
+  text-transform: capitalize;
+}
+
+/* Archive post list items */
+.home .post-list li {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.home .post-list li:last-child {
+  border-bottom: none;
+}
+
+.home .post-list .post-meta {
+  margin-bottom: 0.5rem;
+  clear: both;
+}
+
+.home .post-list h3 {
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  clear: both;
+}
+
+/* Categories page styling */
+.category-posts {
+  margin-bottom: 2em;
+}
+
+.category-posts li {
+  list-style: none;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  border-left: 3px solid #e8e8e8;
+  background-color: #f9f9f9;
+}
+
+.post-date {
+  color: #666;
+  font-size: 0.9em;
+  margin-right: 15px;
+  display: inline-block;
+  min-width: 120px;
+}
+
+.category-posts a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.category-posts a:hover {
+  color: $link-hover-color;
+}
+
+.categories h2 {
+  border-bottom: 2px solid #e8e8e8;
+  padding-bottom: 0.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+.categories h2:first-of-type {
+  margin-top: 0;
+}
+
+/* Post images in listings */
+.post-image {
+  margin: 2rem 0;
+}
+
+.post-image img {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.post-image a:hover img {
+  transform: scale(1.02);
+}
+
+/* ================================================
+   5. HOMEPAGE GALLERY LAYOUT
+   ================================================ */
+
+/* Hide page title on homepage gallery */
+.page-content .post-header {
+  display: none;
+}
+
+/* Homepage gallery grid layout */
+.homepage-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 15px;
+  margin: 2rem 0;
+  max-width: 1200px;
+}
+
+/* Grid positioning for homepage layout */
+.item-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+.item-2 { grid-column: 3 / 5; grid-row: 1 / 2; }
+.item-3 { grid-column: 3 / 4; grid-row: 2 / 4; }
+.item-4 { grid-column: 4 / 5; grid-row: 2 / 3; }
+.item-5 { grid-column: 1 / 2; grid-row: 3 / 5; }
+.item-6 { grid-column: 2 / 3; grid-row: 3 / 4; }
+.item-7 { grid-column: 2 / 4; grid-row: 4 / 5; }
+.item-8 { grid-column: 4 / 5; grid-row: 3 / 5; }
+
+/* Homepage gallery item styling */
+.homepage-item {
+  background: #fff;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: fit-content;
+  align-self: start;
+  padding: 0;
+}
+
+.homepage-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  border-color: #333;
+}
+
+/* Homepage gallery image styling */
+.homepage-image {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.item-1 .homepage-image {
+  height: 250px;
+}
+
+.homepage-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 0.3s ease;
+}
+
+.homepage-item:hover .homepage-image img {
+  transform: scale(1.05);
+}
+
+/* Homepage gallery content styling */
+.homepage-content {
+  padding: 0 0.75rem 0.75rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: -0.5rem;
+}
+
+.item-1 .homepage-content {
+  padding: 0 1rem 1rem 1rem;
+  margin-top: -0.5rem;
+}
+
+.homepage-main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.category {
+  background: #333;
+  color: white !important;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.category:hover {
+  background: #555;
+  color: white !important;
+  text-decoration: none;
+}
+
+/* Homepage gallery typography */
+.homepage-title {
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.item-1 .homepage-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.homepage-title a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.homepage-title a:hover {
+  color: $link-hover-color;
+}
+
+.homepage-excerpt {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+  position: relative;
+  overflow: visible;
+  font-size: 1.15rem;
+}
+
+
+.homepage-author-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.homepage-author {
+  color: #777;
+  font-style: italic;
+}
+
+.homepage-author-date time {
+  color: #666;
+  font-style: italic;
+}
+
+.homepage-category {
+  margin-bottom: 1rem;
+}
+
+/* ================================================
+   7. INDIVIDUAL POST STYLING
+   ================================================ */
+
+/* Featured image styling for individual posts */
+.post-featured-image {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.post-featured-image img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+/* Individual post header styling */
+.post .post-header {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.post .post-title {
+  display: block !important;
+  visibility: visible !important;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.post .post-meta {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Ensure post content has proper spacing */
+.post .post-content {
+  margin-top: 2rem;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.post .post-content h1,
+.post .post-content h2,
+.post .post-content h3,
+.post .post-content h4,
+.post .post-content h5,
+.post .post-content h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.post .post-content h1 {
+  font-size: 2rem;
+}
+
+.post .post-content h2 {
+  font-size: 1.7rem;
+}
+
+.post .post-content h3 {
+  font-size: 1.4rem;
+}
+
+/* Mobile responsive for individual posts */
+@media (max-width: 768px) {
+  .post .post-title {
+    font-size: 2rem;
+  }
+  
+  .post-featured-image img {
+    max-height: 250px;
+  }
+  
+  .post .post-content {
+    font-size: 1rem;
+  }
+  
+  .post .post-content h1 {
+    font-size: 1.7rem;
+  }
+  
+  .post .post-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .post .post-content h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ================================================
+   8. RESPONSIVE DESIGN
+   ================================================ */
+@media screen and (max-width: 600px) {
+  body {
+    padding-top: 0;
+  }
+  
+  /* Mobile header */
+  .site-header .wrapper .site-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .site-header .wrapper {
+    padding: 30px 15px 0 15px !important;
+  }
+  
+  .site-header .site-nav {
+    padding: 0px 0 !important;
+    margin: 0 -15px !important;
+  }
+  
+  .site-nav .trigger {
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  .site-nav .page-link {
+    font-size: 0.8rem !important;
+    margin: 0 10px !important;
+    padding: 8px 15px !important;
+  }
+  
+  /* Mobile social icons */
+  .header-social-links {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  
+  /* Center all footer content on mobile */
+  .site-footer .footer-col-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .site-footer .footer-col {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: auto;
+    max-width: 100%;
+  }
+  
+  .site-footer .contact-list {
+    text-align: center;
+  }
+  
+  .header-social-links .social-media-list {
+    justify-content: center;
+  }
+  
+  .header-social-links .grey {
+    font-size: 1.2rem;
+  }
+  
+  .header-social-links .svg-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Mobile typography */
+  h1, .post-content h1 {
+    font-size: $h1-font-size-mobile;
+  }
+  
+  h2, .post-content h2 {
+    font-size: $h2-font-size-mobile;
+  }
+  
+  .post-header .post-title {
+    font-size: $post-title-font-size-mobile;
+  }
+  
+  /* Mobile layout */
+  .page-with-sidebar-layout {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    margin-left: 0;
+    margin-top: 30px;
+    max-width: none;
+  }
+  
+  /* Mobile archive */
+  .archive-posts-list .archive-posts-item {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .archive-posts-image {
+    width: 100%;
+  }
+  
+  .archive-posts-image img {
+    height: 180px;
+  }
+  
+  .archive-meta {
+    font-size: 0.8em;
+  }
+  
+  .home .post-title {
+    font-size: 1.5rem;
+  }
+  
+  .archive-meta a {
+    padding: 1px 4px;
+    font-size: 0.85em;
+  }
+}
+
+/* Mobile homepage gallery grid */
+@media (max-width: 768px) {
+  .homepage-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
+  
+  .homepage-item {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+  
+  .homepage-image {
+    height: 200px !important;
+  }
+  
+  .homepage-title {
+    font-size: 1.3rem !important;
+  }
+  
+  .homepage-content {
+    padding: 1rem;
+  }
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .homepage-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .item-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .item-2 { grid-column: 3 / 4; grid-row: 1 / 2; }
+  .item-3 { grid-column: 3 / 4; grid-row: 2 / 3; }
+  .item-4 { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .item-5 { grid-column: 2 / 4; grid-row: 3 / 4; }
+}

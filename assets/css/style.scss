@@ -1,0 +1,8 @@
+---
+---
+
+@import
+  "minima/skins/{{ site.minima.skin | default: 'classic' }}",
+  "minima/initialize",
+  "minima/custom-variables",
+  "minima/custom-styles";

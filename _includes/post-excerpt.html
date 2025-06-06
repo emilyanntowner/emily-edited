@@ -1,0 +1,28 @@
+<!-- Custom excerpt that automatically truncates and handles images -->
+{% assign raw_content = post.content | strip_html | strip_newlines %}
+{% assign sentences = raw_content | split: ". " %}
+{% assign word_count = 0 %}
+{% assign sentence_excerpt = "" %}
+{% assign target_words = 50 %}
+
+{% for sentence in sentences %}
+  {% assign sentence_words = sentence | split: " " | size %}
+  {% assign new_total = word_count | plus: sentence_words %}
+  {% if new_total <= target_words %}
+    {% if sentence_excerpt == "" %}
+      {% assign sentence_excerpt = sentence %}
+    {% else %}
+      {% assign sentence_excerpt = sentence_excerpt | append: ". " | append: sentence %}
+    {% endif %}
+    {% assign word_count = new_total %}
+  {% else %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if sentence_excerpt != "" %}
+  {% unless sentence_excerpt contains "." %}
+    {% assign sentence_excerpt = sentence_excerpt | append: "." %}
+  {% endunless %}
+  {{ sentence_excerpt }}
+{% endif %}

@@ -1,0 +1,140 @@
+<div class="sidebar">
+  <!-- Categories Section -->
+  <div class="sidebar-section">
+    <h3>Categories</h3>
+    {% assign categories = site.categories | sort %}
+    {% if categories.size > 0 %}
+      {% comment %} Create array for sorting by post count {% endcomment %}
+      {% assign category_data = '' | split: '' %}
+      {% for category in categories %}
+        {% assign posts = category[1] %}
+        {% assign category_info = category[0] | append: '|' | append: posts.size %}
+        {% assign category_data = category_data | push: category_info %}
+      {% endfor %}
+      
+      {% comment %} Sort by post count (we'll reverse manually) {% endcomment %}
+      {% assign sorted_category_data = category_data | sort %}
+      
+      <ul class="sidebar-list categories-list">
+        {% comment %} Show top 3 categories by post count {% endcomment %}
+        {% assign shown_count = 0 %}
+        {% for category_info in sorted_category_data reversed %}
+          {% if shown_count < 3 %}
+            {% assign category_parts = category_info | split: '|' %}
+            {% assign category_name = category_parts[0] %}
+            {% assign post_count = category_parts[1] %}
+            <li class="category-item category-visible">
+              <a href="/categories/{{ category_name | slugify }}/">
+                {{ category_name | capitalize }}
+                <span class="post-count">({{ post_count }})</span>
+              </a>
+            </li>
+            {% assign shown_count = shown_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        
+        {% if categories.size > 3 %}
+          {% assign hidden_count = 0 %}
+          {% for category_info in sorted_category_data reversed %}
+            {% if hidden_count >= 3 %}
+              {% assign category_parts = category_info | split: '|' %}
+              {% assign category_name = category_parts[0] %}
+              {% assign post_count = category_parts[1] %}
+              <li class="category-item category-hidden" style="display: none;">
+                <a href="/categories/{{ category_name | slugify }}/">
+                  {{ category_name | capitalize }}
+                  <span class="post-count">({{ post_count }})</span>
+                </a>
+              </li>
+            {% endif %}
+            {% assign hidden_count = hidden_count | plus: 1 %}
+          {% endfor %}
+          
+          <li class="see-more-container">
+            <button class="see-more-btn" onclick="toggleCategories()">See more ({{ categories.size | minus: 3 }})</button>
+          </li>
+        {% endif %}
+      </ul>
+    {% else %}
+      <p class="sidebar-empty">No categories yet</p>
+    {% endif %}
+  </div>
+
+  <!-- Recent Posts Section -->
+  <div class="sidebar-section">
+    <h3>Recent Posts</h3>
+    {% assign recent_posts = site.posts | slice: 0, 5 %}
+    {% if recent_posts.size > 0 %}
+      <ul class="sidebar-list recent-posts">
+        {% for post in recent_posts %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <small class="post-date">{{ post.date | date: "%b %d, %Y" }}</small>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+
+  <!-- Tags Section -->
+  <div class="sidebar-section">
+    <h3>Tags</h3>
+    {% assign tags = site.tags | sort %}
+    {% if tags.size > 0 %}
+      {% comment %} Create array for sorting by post count {% endcomment %}
+      {% assign tag_data = '' | split: '' %}
+      {% for tag in tags %}
+        {% assign posts = tag[1] %}
+        {% assign tag_info = tag[0] | append: '|' | append: posts.size %}
+        {% assign tag_data = tag_data | push: tag_info %}
+      {% endfor %}
+      
+      {% comment %} Sort by post count (we'll reverse manually) {% endcomment %}
+      {% assign sorted_tag_data = tag_data | sort %}
+      
+      <div class="tag-cloud">
+        {% comment %} Show top 6 tags by post count {% endcomment %}
+        {% assign shown_tag_count = 0 %}
+        {% for tag_info in sorted_tag_data reversed %}
+          {% if shown_tag_count < 6 %}
+            {% assign tag_parts = tag_info | split: '|' %}
+            {% assign tag_name = tag_parts[0] %}
+            {% assign post_count = tag_parts[1] %}
+            <a href="/tags/{{ tag_name | slugify }}/" 
+               class="tag tag-visible" 
+               title="{{ post_count }} post{% if post_count != 1 %}s{% endif %}">
+              {{ tag_name }}
+            </a>
+            {% assign shown_tag_count = shown_tag_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        
+        {% if tags.size > 6 %}
+          {% assign hidden_tag_count = 0 %}
+          {% for tag_info in sorted_tag_data reversed %}
+            {% if hidden_tag_count >= 6 %}
+              {% assign tag_parts = tag_info | split: '|' %}
+              {% assign tag_name = tag_parts[0] %}
+              {% assign post_count = tag_parts[1] %}
+              <a href="/tags/{{ tag_name | slugify }}/" 
+                 class="tag tag-hidden" 
+                 style="display: none;"
+                 title="{{ post_count }} post{% if post_count != 1 %}s{% endif %}">
+                {{ tag_name }}
+              </a>
+            {% endif %}
+            {% assign hidden_tag_count = hidden_tag_count | plus: 1 %}
+          {% endfor %}
+        {% endif %}
+      </div>
+      
+      {% if tags.size > 6 %}
+        <div class="see-more-container">
+          <button class="see-more-btn" onclick="toggleTags()">See more ({{ tags.size | minus: 6 }})</button>
+        </div>
+      {% endif %}
+    {% else %}
+      <p class="sidebar-empty">No tags yet</p>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,36 @@
+---
+layout: page
+---
+
+<div class="post-image-meta-container">
+  {% if page.image %}
+    <div class="post-featured-image">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
+    </div>
+  {% endif %}
+
+  <div class="posts-author-date">
+    <span class="posts-author">{% if page.author %}By {{ page.author }}{% else %}By {{ site.author.name | default: site.author }}{% endif %}</span>
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
+  </div>
+  <div class="posts-category-tags">
+    {%- if page.categories.size > 0 -%}
+      <div class="posts-category-left">
+        <a href="{{ '/categories/' | append: page.categories.first | append: '/' | relative_url }}" class="category">{{ page.categories | first | upcase }}</a>
+      </div>
+    {%- endif -%}
+    {%- if page.tags.size > 0 -%}
+      <div class="posts-tags-right">
+        {% for tag in page.tags %}
+          {% assign tag_slug = tag | slugify %}
+          <a href="{{ '/tags/' | append: tag_slug | append: '/' | relative_url }}" class="tag">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<div class="post-content e-content" itemprop="articleBody">
+  {{ content }}
+</div>

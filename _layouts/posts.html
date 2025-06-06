@@ -1,0 +1,150 @@
+---
+layout: page
+---
+
+<div class="posts-page">
+    <div class="posts-sidebar">
+      {% include sidebar.html %}
+    </div>
+    
+    <div class="home">
+      {{ content }}
+      
+      {%- if site.posts.size > 0 -%}
+        {% if page.list_title %}
+          <h2 class="post-list-heading">{{ page.list_title }}</h2>
+        {% endif %}
+        
+        <ul class="posts-list post-list">
+          {%- for post in site.posts -%}
+          <li class="posts-list-item">
+            {% comment %} Extract post image from front matter or content {% endcomment %}
+            {% assign post_image = nil %}
+            {% if post.image %}
+              {% assign post_image = post.image %}
+            {% elsif post.content contains "![" %}
+              {% comment %} Extract first image from post content {% endcomment %}
+              {% assign content_parts = post.content | split: "![" %}
+              {% if content_parts.size > 1 %}
+                {% assign image_part = content_parts[1] | split: "](" %}
+                {% if image_part.size > 1 %}
+                  {% assign image_url_part = image_part[1] | split: ")" %}
+                  {% if image_url_part.size > 0 %}
+                    {% assign post_image = image_url_part[0] %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+            
+            {% if post_image %}
+              <div class="posts-image" style="background-image: url('{{ post_image | relative_url }}');" role="img" aria-label="{{ post.title }}">
+              </div>
+            {% endif %}
+            
+            <div class="posts-content">
+              <h3>
+                <a class="post-link" href="{{ post.url | relative_url }}">
+                  {{ post.title | escape }}
+                </a>
+              </h3>
+              <div class="posts-author-date">
+                <span class="posts-author">{% if post.author %}By {{ post.author }}{% else %}By {{ site.author.name | default: site.author }}{% endif %}</span>
+                {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+              </div>
+              {%- if post.categories.size > 0 -%}
+                <div class="posts-category">
+                  <a href="{{ '/categories/' | append: post.categories.first | append: '/' | relative_url }}" class="category">{{ post.categories | first | upcase }}</a>
+                </div>
+              {%- endif -%}
+              {%- if site.show_excerpts -%}
+                <div class="posts-excerpt">
+                  {% comment %} Word limit with sentence completion {% endcomment %}
+                  {% assign raw_excerpt = post.excerpt | strip_html | strip_newlines %}
+                  {% assign all_words = raw_excerpt | split: " " %}
+                  {% assign word_count = 0 %}
+                  {% assign current_excerpt = "" %}
+                  
+                  {% for word in all_words %}
+                    {% assign word_count = word_count | plus: 1 %}
+                    {% if current_excerpt == "" %}
+                      {% assign current_excerpt = word %}
+                    {% else %}
+                      {% assign current_excerpt = current_excerpt | append: " " | append: word %}
+                    {% endif %}
+                    
+                    {% comment %} If we hit 50 words and word ends with sentence punctuation, stop {% endcomment %}
+                    {% if word_count >= 50 %}
+                      {% if word contains "." or word contains "!" or word contains "?" %}
+                        {% break %}
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                  
+                  <p>{{ current_excerpt }}</p>
+                </div>
+              {%- endif -%}
+            </div>
+          </li>
+          {%- endfor -%}
+        </ul>
+
+        {% if site.paginate %}
+          <div class="pager">
+            <ul class="pagination">
+            {%- if paginator.previous_page %}
+              <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">{{ paginator.previous_page }}</a></li>
+            {%- else %}
+              <li><div class="pager-edge">•</div></li>
+            {%- endif %}
+              <li><div class="current-page">{{ paginator.page }}</div></li>
+            {%- if paginator.next_page %}
+              <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">{{ paginator.next_page }}</a></li>
+            {%- else %}
+              <li><div class="pager-edge">•</div></li>
+            {%- endif %}
+            </ul>
+          </div>
+        {%- endif %}
+
+      {%- endif -%}
+    </div>
+</div>
+
+<script>
+// Toggle categories function
+function toggleCategories() {
+  const hiddenCategories = document.querySelectorAll('.category-hidden');
+  const seeMoreBtn = document.querySelector('.see-more-btn');
+  const isExpanded = hiddenCategories[0]?.style.display !== 'none';
+  
+  hiddenCategories.forEach(function(category) {
+    category.style.display = isExpanded ? 'none' : 'block';
+  });
+  
+  if (isExpanded) {
+    const hiddenCount = hiddenCategories.length;
+    seeMoreBtn.textContent = `See more (${hiddenCount})`;
+  } else {
+    seeMoreBtn.textContent = 'See less';
+  }
+}
+
+// Toggle tags function
+function toggleTags() {
+  const hiddenTags = document.querySelectorAll('.tag-hidden');
+  const seeMoreBtn = document.querySelector('.tag-cloud + .see-more-container .see-more-btn');
+  const isExpanded = hiddenTags[0]?.style.display !== 'none';
+  
+  hiddenTags.forEach(function(tag) {
+    tag.style.display = isExpanded ? 'none' : 'inline-block';
+  });
+  
+  if (isExpanded) {
+    const hiddenCount = hiddenTags.length;
+    seeMoreBtn.textContent = `See more (${hiddenCount})`;
+  } else {
+    seeMoreBtn.textContent = 'See less';
+  }
+}
+</script>

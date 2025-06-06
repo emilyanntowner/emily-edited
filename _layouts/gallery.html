@@ -1,0 +1,92 @@
+---
+layout: page
+---
+
+{{ content }}
+
+<div class="homepage-grid">
+  {% comment %} Allow customization of post limit via page front matter {% endcomment %}
+  {% assign post_limit = page.gallery_limit | default: 8 %}
+  {% assign featured_posts = site.posts | limit: post_limit %}
+  
+  {% for post in featured_posts %}
+    <article class="homepage-item item-{{ forloop.index }}" data-category="{{ post.categories | first | slugify }}">
+      {% comment %} Extract post image from front matter or content {% endcomment %}
+      {% assign post_image = nil %}
+      {% if post.image %}
+        {% assign post_image = post.image %}
+      {% elsif post.content contains "![" %}
+        {% comment %} Extract first image from post content {% endcomment %}
+        {% assign content_parts = post.content | split: "![" %}
+        {% if content_parts.size > 1 %}
+          {% assign image_part = content_parts[1] | split: "](" %}
+          {% if image_part.size > 1 %}
+            {% assign image_url_part = image_part[1] | split: ")" %}
+            {% if image_url_part.size > 0 %}
+              {% assign post_image = image_url_part[0] %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+      
+      {% if post_image %}
+        <div class="homepage-image">
+          <img src="{{ post_image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+        </div>
+      {% endif %}
+      
+      <div class="homepage-content">
+        <h2 class="homepage-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h2>
+        
+        <div class="homepage-author-date">
+          <span class="homepage-author">{% if post.author %}By {{ post.author }}{% else %}By {{ site.author.name | default: site.author }}{% endif %}</span>
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+        </div>
+        
+        {% if post.categories.size > 0 %}
+          <div class="homepage-category">
+            <a href="{{ '/categories/' | append: post.categories.first | append: '/' | relative_url }}" class="category">{{ post.categories | first | upcase }}</a>
+          </div>
+        {% endif %}
+        
+        <div class="homepage-main-content">
+          {% comment %} Different excerpt handling based on post position {% endcomment %}
+          {% assign raw_excerpt = post.excerpt | strip_html | strip_newlines %}
+          {% assign all_words = raw_excerpt | split: " " %}
+          {% assign word_count = 0 %}
+          {% assign current_excerpt = "" %}
+          
+          {% comment %} Set word limit based on post position {% endcomment %}
+          {% if forloop.index == 1 %}
+            {% assign word_limit = 50 %}
+          {% elsif forloop.index == 2 %}
+            {% assign word_limit = 25 %}
+          {% else %}
+            {% assign word_limit = 15 %}
+          {% endif %}
+          
+          {% for word in all_words %}
+            {% assign word_count = word_count | plus: 1 %}
+            {% if current_excerpt == "" %}
+              {% assign current_excerpt = word %}
+            {% else %}
+              {% assign current_excerpt = current_excerpt | append: " " | append: word %}
+            {% endif %}
+            
+            {% comment %} If we hit word limit and word ends with sentence punctuation, stop {% endcomment %}
+            {% if word_count >= word_limit %}
+              {% if word contains "." or word contains "!" or word contains "?" %}
+                {% break %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          
+          <p class="homepage-excerpt">{{ current_excerpt }}</p>
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</div>

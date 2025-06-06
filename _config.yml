@@ -1,0 +1,121 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: Emily Edited
+email: hello@emilytowner.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Science and Psychology. 
+footer_text: "Where psychology meets real life—exploring how your brain works and why it matters."
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://emilyanntowner.github.io/emily-edited" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Author information (Minima v3 format)
+author:
+  name: Emily Towner
+  email: hello@emilytowner.com
+
+# Build settings
+theme: minima
+show_excerpts: true
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+
+# Minima v3 specific settings
+minima:
+  skin: classic  # Options: classic, dark, auto, solarized
+  date_format: "%b %-d, %Y"
+  hide_site_feed_link: true
+  
+  # Navigation pages (will appear in header)
+  nav_pages:
+    - about.md
+    - posts.md
+  
+  # Social links (will appear in header)
+  social_links:
+    - title: Website
+      icon: web
+      url: "https://www.emilyanntowner.com/"
+    - title: Instagram
+      icon: instagram
+      url: "https://instagram.com/emilyanntowner"
+    - title: TikTok
+      icon: tiktok
+      url: "https://tiktok.com/@emilyanntowner"
+    - title: YouTube
+      icon: youtube
+      url: "https://youtube.com/@emilyanntowner"
+    - title: Bluesky
+      icon: bluesky
+      url: "https://bsky.app/profile/emilyanntowner"
+    - title: Support Me
+      icon: hand-holding-heart
+      url: "https://buymeacoffee.com/emilyanntowner"
+    # - title: Twitter
+    #   icon: x-twitter  
+    #   url: "https://twitter.com/your-twitter-handle"
+    # Add your other social media accounts here:
+    # - title: GitHub
+    #   icon: github
+    #   url: "https://github.com/your-github-username"
+    # - title: LinkedIn
+    #   icon: linkedin
+    #   url: "https://linkedin.com/in/your-linkedin-profile"
+  
+  # Show post excerpts on home page
+  show_excerpts: true
+
+# Jekyll Archives configuration
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: archive
+  permalinks:
+    category: '/categories/:name/'
+    tag: '/tags/:name/'
+  titles:
+    category: ':name'
+    tag: ':name'
+  descriptions:
+    category: 'Posts in the ":name" category'
+    tag: 'Posts tagged with ":name"'
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
