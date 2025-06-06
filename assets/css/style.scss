@@ -2,7 +2,6 @@
 ---
 
 @import
-  "minima/skins/{{ site.minima.skin | default: 'classic' }}",
-  "minima/initialize",
+  "minima",
   "minima/custom-variables",
   "minima/custom-styles";

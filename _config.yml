@@ -39,16 +39,9 @@ plugins:
   - jekyll-seo-tag
   - jekyll-archives
 
-# Minima v3 specific settings
+# Minima settings for GitHub Pages compatibility
 minima:
-  skin: classic  # Options: classic, dark, auto, solarized
   date_format: "%b %-d, %Y"
-  hide_site_feed_link: true
-  
-  # Navigation pages (will appear in header)
-  nav_pages:
-    - about.md
-    - posts.md
   
   # Social links (will appear in header)
   social_links:
@@ -70,19 +63,6 @@ minima:
     - title: Support Me
       icon: hand-holding-heart
       url: "https://buymeacoffee.com/emilyanntowner"
-    # - title: Twitter
-    #   icon: x-twitter  
-    #   url: "https://twitter.com/your-twitter-handle"
-    # Add your other social media accounts here:
-    # - title: GitHub
-    #   icon: github
-    #   url: "https://github.com/your-github-username"
-    # - title: LinkedIn
-    #   icon: linkedin
-    #   url: "https://linkedin.com/in/your-linkedin-profile"
-  
-  # Show post excerpts on home page
-  show_excerpts: true
 
 # Jekyll Archives configuration
 jekyll-archives:
