@@ -171,6 +171,18 @@ tags: [tag1, tag2]
 
 ## Recent Major Changes
 
+### GitHub Actions Deployment (Latest)
+- **Added GitHub Actions Workflow**: Created `.github/workflows/deploy.yml` for automated deployment
+- **Ruby Version**: Using Ruby 3.2 for compatibility with sass-embedded
+- **Deployment Method**: Changed from branch-based to GitHub Actions deployment
+- **Benefits**: Allows using Jekyll 4.4.1 and Minima v3 on GitHub Pages
+
+### Site Structure Updates (Latest)
+- **Fixed CSS Import**: Updated to Minima v3 syntax (`@import "minima/skins/classic", "minima/initialize"`)
+- **Baseurl Configuration**: Set to `/emily-edited` for proper GitHub Pages deployment
+- **Archive Excerpt Fix**: Changed `site.minima.show_excerpts` to `site.show_excerpts` in archive layout
+- **Created Site Guide**: Added `SITE_GUIDE.md` for easy content management
+
 ### Homepage Gallery Redesign
 - **Layout Order**: Changed to image, title, author/date, category, excerpt
 - **Spacing Optimization**: Negative margins (-0.5rem) for tighter image-title connection
