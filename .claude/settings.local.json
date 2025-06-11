@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 5 bundle exec jekyll serve)",
+      "Bash(bundle exec jekyll serve:*)"
+    ],
+    "deny": []
+  }
+}
