@@ -130,6 +130,8 @@ bundle exec jekyll serve --drafts
 - `.category` - Category button styling (dark background, white text)
 - `.posts-author-date` - Metadata line styling
 - `.site-nav` - Navigation container with responsive behavior
+- `.footer-newsletter` - Newsletter subscription form container
+- `.embeddable-buttondown-form` - Buttondown form styling
 
 ### Responsive Strategy
 - **Mobile-First**: Base styles for mobile, enhanced for larger screens
@@ -205,6 +207,11 @@ tags: [tag1, tag2]
 - **Copyright Notice**: Added centered "Copyright © 2025 · Emily Towner"
 - **Mobile Responsive**: All footer elements properly centered on mobile
 - **Site Description**: Updated footer text to reflect site purpose
+- **Newsletter Subscription**: Added Buttondown email signup form in right footer column
+  - Positioned above social links (Posts/RSS)
+  - Compact inline design with email input and subscribe button
+  - Mobile responsive (stacks vertically on small screens)
+  - No attribution link for cleaner appearance
 
 ### Image Management
 - **Simplified Structure**: Changed from /YYYY/MM/DD/slug/image.png to /YYYY/MM/DD/image.png
