@@ -22,6 +22,17 @@ bundle exec jekyll build
 bundle exec jekyll serve --drafts
 ```
 
+## Production Configuration
+
+### Custom Domain Setup
+- **Domain**: https://emilyedited.com/
+- **CNAME file**: Contains `emilyedited.com`
+- **_config.yml settings**:
+  - `baseurl: ""` (empty for custom domain)
+  - `url: "https://emilyedited.com"`
+  - `permalink: /:categories/:year/:month/:day/:title/` (clean URLs without .html)
+- **DNS Configuration**: A records pointing to GitHub Pages IPs (185.199.108-111.153)
+
 ## Architecture
 
 ### Key Files & Their Purpose
@@ -173,15 +184,24 @@ tags: [tag1, tag2]
 
 ## Recent Major Changes
 
-### GitHub Actions Deployment (Latest)
+### Custom Domain Configuration (Latest)
+- **Domain Setup**: Site now runs on https://emilyedited.com/
+- **Configuration Changes**:
+  - Added CNAME file with `emilyedited.com`
+  - Updated `baseurl` to empty string (was `/emily-edited`)
+  - Updated `url` to `https://emilyedited.com`
+  - Added `permalink` setting for clean URLs without .html extensions
+  - Modified GitHub Actions to remove dynamic baseurl
+- **URL Structure**: Clean URLs like `/psychology/2025/06/05/mind-most-complex/`
+
+### GitHub Actions Deployment
 - **Added GitHub Actions Workflow**: Created `.github/workflows/deploy.yml` for automated deployment
 - **Ruby Version**: Using Ruby 3.2 for compatibility with sass-embedded
 - **Deployment Method**: Changed from branch-based to GitHub Actions deployment
 - **Benefits**: Allows using Jekyll 4.4.1 and Minima v3 on GitHub Pages
 
-### Site Structure Updates (Latest)
+### Site Structure Updates
 - **Fixed CSS Import**: Updated to Minima v3 syntax (`@import "minima/skins/classic", "minima/initialize"`)
-- **Baseurl Configuration**: Set to `/emily-edited` for proper GitHub Pages deployment
 - **Archive Excerpt Fix**: Changed `site.minima.show_excerpts` to `site.show_excerpts` in archive layout
 - **Created Site Guide**: Added `SITE_GUIDE.md` for easy content management
 
