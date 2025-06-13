@@ -23,8 +23,8 @@ email: hello@emilytowner.com
 description: >- # this means to ignore newlines until "baseurl:"
   Science and Psychology. 
 footer_text: "Where psychology meets real life—exploring how your brain works and why it matters."
-baseurl: "/emily-edited" # the subpath of your site, e.g. /blog
-url: "https://emilyanntowner.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://emilyedited.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Author information (Minima v3 format)
 author:
